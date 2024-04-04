@@ -1,0 +1,11 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    margin-left: 50px;
+    gap: 0;
+}
+
+.header h1  {
+    height: 20px;
+}
