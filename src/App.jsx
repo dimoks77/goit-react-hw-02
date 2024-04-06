@@ -54,7 +54,7 @@ export const App = () => {
     <>
       <Description />
       <Options updateFeedback={updateFeedback} handleClickReset={handleClickReset} totalFeedback={totalFeedback} />
-      { totalFeedback > 0 ? <Feedback countGood={counts.good} countNeutral={counts.neutral} countBad={counts.bad} totalFeedback={totalFeedback} positive={positive} /> : <Notification /> }
+      { totalFeedback > 0 ? <Feedback counts={counts} totalFeedback={totalFeedback} positive={positive} /> : <Notification /> }
     </>
   );
 };
