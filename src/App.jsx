@@ -68,12 +68,15 @@ export const App = () => {
     setIsFeedback(false);
     localStorage.removeItem("feedbackCounts"); // удаляем из лок. хран.
   };
+  
+  const totalFeedback = counts.good + counts.neutral + counts.bad;
+  const positive = Math.round((counts.good / totalFeedback) * 100);
 
   return (
     <>
       <Description />
       <Options updateFeedback={updateFeedback} handleClickReset={handleClickReset} isFeedback={isFeedback} />
-      {isFeedback ? <Feedback countGood={counts.good} countNeutral={counts.neutral} countBad={counts.bad} />
+      {isFeedback ? <Feedback countGood={counts.good} countNeutral={counts.neutral} countBad={counts.bad} totalFeedback={totalFeedback} positive={positive} />
        : <p className={css.nofeedback}>No feedback yet</p>}
     </>
   );

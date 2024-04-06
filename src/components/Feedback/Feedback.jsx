@@ -1,8 +1,6 @@
 import css from "./Feedback.module.css";
 
-const Feedback = ({ countGood, countNeutral, countBad }) => {
-  const totalFeedback = countGood + countNeutral + countBad;
-  const positive = Math.round((countGood / totalFeedback) * 100);
+const Feedback = ({ countGood, countNeutral, countBad, positive, totalFeedback }) => {
   return (
     <div className={css.counters}>
       <p>Good: {countGood}</p>
