@@ -72,7 +72,7 @@ export const App = () => {
   return (
     <>
       <Description />
-      <Options updateFeedback={updateFeedback} handleClickReset={handleClickReset} />
+      <Options updateFeedback={updateFeedback} handleClickReset={handleClickReset} isFeedback={isFeedback} />
       {isFeedback ? <Feedback countGood={counts.good} countNeutral={counts.neutral} countBad={counts.bad} />
        : <p className={css.nofeedback}>No feedback yet</p>}
     </>
