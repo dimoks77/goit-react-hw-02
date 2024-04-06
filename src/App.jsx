@@ -4,7 +4,6 @@ import Feedback from "./components/Feedback/Feedback";
 import Options from "./components/Options/Options";
 import Notification from "./components/Notification/Notification";
 
-
 export const App = () => {
   const [counts, setCounts] = useState(() => {
     // Читаем данные из локального хранилища
@@ -19,13 +18,11 @@ export const App = () => {
     }
   });
 
-
   useEffect(() => {
     // Тут при загрузке читаем то что в локал хранилище
     const storedCounts = localStorage.getItem("feedbackCounts");
     if (storedCounts) {
       setCounts(JSON.parse(storedCounts));
-
     }
   }, []);
 
