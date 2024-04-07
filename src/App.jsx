@@ -6,29 +6,16 @@ import Notification from "./components/Notification/Notification";
 
 export const App = () => {
   const [counts, setCounts] = useState(() => {
-    // Читаем данные из локального хранилища
-    const storedCounts = localStorage.getItem("feedbackCounts");
-    // Проверка они есть или нет
-    if (storedCounts) {
-      // парсим  из JSON 
-      return JSON.parse(storedCounts);
+    const storedCounts = localStorage.getItem("feedbackCounts"); // Читаем данные из локального хранилища
+    if (storedCounts) { // Проверка они есть или нет
+      return JSON.parse(storedCounts);  // парсим  из JSON 
     } else {
-      // Если нет, то возвращаем объект с нулями
-      return { good: 0, neutral: 0, bad: 0 };
+      return { good: 0, neutral: 0, bad: 0 };  // Если нет, то возвращаем объект с нулями
     }
   });
 
   useEffect(() => {
-    // Тут при загрузке читаем то что в локал хранилище
-    const storedCounts = localStorage.getItem("feedbackCounts");
-    if (storedCounts) {
-      setCounts(JSON.parse(storedCounts));
-    }
-  }, []);
-
-  useEffect(() => {
-    // При изменении сохраняем их в лок. хранилище
-    localStorage.setItem("feedbackCounts", JSON.stringify(counts));
+    localStorage.setItem("feedbackCounts", JSON.stringify(counts)); // При изменении сохраняем их в лок. хранилище
   }, [counts]);
 
   const updateFeedback = (type) => {
@@ -48,7 +35,8 @@ export const App = () => {
   };
 
   const totalFeedback = counts.good + counts.neutral + counts.bad;
-  const positive = Math.round((counts.good / totalFeedback) * 100);
+  let positive = 0;
+  if (totalFeedback !== 0) positive = Math.round((counts.good / totalFeedback) * 100);
 
   return (
     <>
